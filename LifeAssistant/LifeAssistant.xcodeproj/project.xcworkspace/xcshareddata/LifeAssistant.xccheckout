@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7676B196-5E62-4935-8361-509171ABE5CA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F3D9BC2307C07288E20A62FB6877DB660F4DB078</key>
+		<string>github.com:Tonychb/LifeAssistant.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>LifeAssistant/LifeAssistant.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F3D9BC2307C07288E20A62FB6877DB660F4DB078</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:Tonychb/LifeAssistant.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F3D9BC2307C07288E20A62FB6877DB660F4DB078</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F3D9BC2307C07288E20A62FB6877DB660F4DB078</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LifeAssistant</string>
+		</dict>
+	</array>
+</dict>
+</plist>
