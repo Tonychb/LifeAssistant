@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8107F1891AF8B1630083F03F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8107F1881AF8B1630083F03F /* main.m */; };
 		8107F18C1AF8B1630083F03F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8107F18B1AF8B1630083F03F /* AppDelegate.m */; };
-		8107F18F1AF8B1630083F03F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8107F18E1AF8B1630083F03F /* ViewController.m */; };
 		8107F1941AF8B1630083F03F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8107F1931AF8B1630083F03F /* Images.xcassets */; };
 		8107F1A31AF8B1630083F03F /* LifeAssistantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8107F1A21AF8B1630083F03F /* LifeAssistantTests.m */; };
 /* End PBXBuildFile section */
@@ -30,8 +29,6 @@
 		8107F1881AF8B1630083F03F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8107F18A1AF8B1630083F03F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8107F18B1AF8B1630083F03F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8107F18D1AF8B1630083F03F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8107F18E1AF8B1630083F03F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8107F1931AF8B1630083F03F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8107F19C1AF8B1630083F03F /* LifeAssistantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeAssistantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8107F1A11AF8B1630083F03F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,8 +76,6 @@
 			children = (
 				8107F18A1AF8B1630083F03F /* AppDelegate.h */,
 				8107F18B1AF8B1630083F03F /* AppDelegate.m */,
-				8107F18D1AF8B1630083F03F /* ViewController.h */,
-				8107F18E1AF8B1630083F03F /* ViewController.m */,
 				8107F1931AF8B1630083F03F /* Images.xcassets */,
 				8107F1861AF8B1630083F03F /* Supporting Files */,
 			);
@@ -211,7 +206,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8107F18F1AF8B1630083F03F /* ViewController.m in Sources */,
 				8107F18C1AF8B1630083F03F /* AppDelegate.m in Sources */,
 				8107F1891AF8B1630083F03F /* main.m in Sources */,
 			);
@@ -391,6 +385,7 @@
 				8107F1A81AF8B1630083F03F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8107F1A91AF8B1630083F03F /* Build configuration list for PBXNativeTarget "LifeAssistantTests" */ = {
 			isa = XCConfigurationList;
@@ -399,6 +394,7 @@
 				8107F1AB1AF8B1630083F03F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
