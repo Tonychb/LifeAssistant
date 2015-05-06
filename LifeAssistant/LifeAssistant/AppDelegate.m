@@ -95,6 +95,7 @@
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
 #endif
     //********************************************************************
+    application.applicationIconBadgeNumber = 0;
     
     return YES;
 }
@@ -114,7 +115,9 @@
     //注册成功，将deviceToken保存到应用服务器数据库中
     
     // [self addDeviceToken:deviceToken];
-    MyLog(@"device token:%@",deviceToken);
+    MyLog(@"device token:--->%@",deviceToken);
+    //将deviceToken转换成字符串，以便后续使用
+    MyLog(@"将deviceToken转换成字符串,deviceToken description:--->%@",[deviceToken description]);
     
 }
 
@@ -129,10 +132,16 @@
 #pragma mark 接收到推送通知之后
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     
+    //程序角标数字
+    application.applicationIconBadgeNumber = 0;
+    
     // 处理推送消息
     MyLog(@"receiveRemoteNotification,userInfo is %@",userInfo);
     
     MyLog(@"收到推送消息:%@",[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
+    
+    MyLog(@"自定义参数:%@",[[userInfo objectForKey:@"userinfo"] objectForKey:@"name"]);
+    
 }
 
 
@@ -143,7 +152,9 @@
 // *  @param deviceToken 设备令牌
 // */
 //-(void)addDeviceToken:(NSData *)deviceToken{
-//    NSString *key=@"DeviceToken";
+////  将deviceToken转换成字符串，以便后续使用
+//    NSString *token = [deviceToken description];
+//    NSString *key = @"DeviceToken";
 //    NSData *oldToken= [[NSUserDefaults standardUserDefaults]objectForKey:key];
 //    //如果偏好设置中的已存储设备令牌和新获取的令牌不同则存储新令牌并且发送给服务器端
 //    if (![oldToken isEqualToData:deviceToken]) {
@@ -188,6 +199,8 @@
      减少OpenGL ES帧率；
      若为游戏应暂停游戏；
      */
+    
+    application.applicationIconBadgeNumber = 0;
 }
 
 #pragma mark - 已经进入后台
@@ -210,6 +223,8 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     
     //程序即将进去前台时调用，对应applicationWillResignActive（将进入后台）。这个方法用来撤销applicationWillResignActive中做的改变。
+    
+    application.applicationIconBadgeNumber = 0;
 }
 
 #pragma mark - 已经进入前台
