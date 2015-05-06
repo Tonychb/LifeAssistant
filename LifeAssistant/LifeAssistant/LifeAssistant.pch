@@ -1,0 +1,45 @@
+//
+//  LifeAssistant.pch
+//  LifeAssistant
+//
+//  Created by zhubaoshi on 15/5/6.
+//  Copyright (c) 2015年 tonychb. All rights reserved.
+//
+
+//#ifndef LifeAssistant_LifeAssistant_pch
+//#define LifeAssistant_LifeAssistant_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+//***********第三方图像下载缓存*********
+#import "UIImageView+WebCache.h"
+
+//***********************************
+
+#import "Reachability.h"            //网络监测
+#import "Common.h"                  //全局宏
+#import "UIColor+custom.h"          //扩展颜色方法
+#import "UIBarButtonItem+Custom.h"  //自定义导航条按钮样式
+#import "UIImage+CHB.h"             //图片处理类
+#import "IsRootViewController.h"    //判断是否为主视图控制器私有方法
+#import "HttpTool.h"                //网络请求工具类
+#import "ImageTool.h"               //图片缓存异步下载方法
+#import "MJExtension.h"             //字典和模型之间互相转换的超轻量级框架
+#import "Masonry.h"                 //轻量级的自动布局框架
+
+
+
+
+
+//使用语音识别 UI
+#import "BDRecognizerViewController.h"
+#import "BDRecognizerViewDelegate.h"
+
+
+#endif

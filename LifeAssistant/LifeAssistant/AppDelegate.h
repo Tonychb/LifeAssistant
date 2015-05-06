@@ -12,6 +12,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+/**
+ *  网络监测
+ */
+@property (strong, nonatomic) Reachability *hostReachability;
 
 @end
 
