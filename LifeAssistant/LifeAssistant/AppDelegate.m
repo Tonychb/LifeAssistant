@@ -15,7 +15,7 @@
 
 @implementation AppDelegate
 
-
+#pragma mark - 在app开始运行时会调用里面的方法。
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
@@ -76,10 +76,103 @@
     }
     //********************************************************************
     
-    
     [self.window makeKeyAndVisible];
+    
+    //***************注册推送通知(注意iOS8注册方法发生了变化)******************
+#ifdef __IPHONE_8_0 //这里主要是针对iOS 8.0,相应的8.1,8.2等版本各程序员可自行发挥，如果苹果以后推出更高版本还不会使用这个注册方式就不得而知了……
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        
+        //推送的形式：标记，声音，提示警告
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+    }  else {
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+    }
+#else
+    UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+#endif
+    //********************************************************************
+    
     return YES;
 }
+
+#ifdef __IPHONE_8_0
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [application registerForRemoteNotifications];
+}
+#endif
+
+
+#pragma mark 注册推送通知之后
+//在此接收设备令牌,获取device token
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    
+    //注册成功，将deviceToken保存到应用服务器数据库中
+    
+    // [self addDeviceToken:deviceToken];
+    MyLog(@"device token:%@",deviceToken);
+    
+}
+
+#pragma mark 获取device token失败后
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    
+    MyLog(@"didFailToRegisterForRemoteNotificationsWithError:%@",error.localizedDescription);
+    
+    //[self addDeviceToken:nil];
+}
+
+#pragma mark 接收到推送通知之后
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    
+    // 处理推送消息
+    MyLog(@"receiveRemoteNotification,userInfo is %@",userInfo);
+    
+    MyLog(@"收到推送消息:%@",[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
+}
+
+
+//#pragma mark - 私有方法
+///**
+// *  添加设备令牌到服务器端
+// *
+// *  @param deviceToken 设备令牌
+// */
+//-(void)addDeviceToken:(NSData *)deviceToken{
+//    NSString *key=@"DeviceToken";
+//    NSData *oldToken= [[NSUserDefaults standardUserDefaults]objectForKey:key];
+//    //如果偏好设置中的已存储设备令牌和新获取的令牌不同则存储新令牌并且发送给服务器端
+//    if (![oldToken isEqualToData:deviceToken]) {
+//        [[NSUserDefaults standardUserDefaults] setObject:deviceToken forKey:key];
+//        [self sendDeviceTokenWidthOldDeviceToken:oldToken newDeviceToken:deviceToken];
+//    }
+//}
+//
+//-(void)sendDeviceTokenWidthOldDeviceToken:(NSData *)oldToken newDeviceToken:(NSData *)newToken{
+//    //注意一定确保真机可以正常访问下面的地址
+//    NSString *urlStr=@"http://192.168.1.101/RegisterDeviceToken.aspx";
+//    urlStr=[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    NSURL *url=[NSURL URLWithString:urlStr];
+//    NSMutableURLRequest *requestM=[NSMutableURLRequest requestWithURL:url cachePolicy:0 timeoutInterval:10.0];
+//    [requestM setHTTPMethod:@"POST"];
+//    NSString *bodyStr=[NSString stringWithFormat:@"oldToken=%@&newToken=%@",oldToken,newToken];
+//    NSData *body=[bodyStr dataUsingEncoding:NSUTF8StringEncoding];
+//    [requestM setHTTPBody:body];
+//    NSURLSession *session=[NSURLSession sharedSession];
+//    NSURLSessionDataTask *dataTask= [session dataTaskWithRequest:requestM completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        if (error) {
+//            NSLog(@"Send failure,error is :%@",error.localizedDescription);
+//        }else{
+//            NSLog(@"Send Success!");
+//        }
+//
+//    }];
+//    [dataTask resume];
+//}
 
 
 #pragma mark - 将进入后台
