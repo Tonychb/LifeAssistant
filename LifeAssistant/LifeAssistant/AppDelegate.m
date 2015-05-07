@@ -80,13 +80,17 @@
     
     //***************注册推送通知(注意iOS8注册方法发生了变化)******************
 #ifdef __IPHONE_8_0 //这里主要是针对iOS 8.0,相应的8.1,8.2等版本各程序员可自行发挥，如果苹果以后推出更高版本还不会使用这个注册方式就不得而知了……
-    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+    //检查一个对象是否支持一个方法
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
         
         //推送的形式：标记，声音，提示警告
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         
-    }  else {
+    }
+    else
+    {
         UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
     }
@@ -141,7 +145,7 @@
     MyLog(@"收到推送消息:%@",[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
     
     MyLog(@"自定义参数:%@",[[userInfo objectForKey:@"userinfo"] objectForKey:@"name"]);
-    
+
 }
 
 
@@ -184,6 +188,13 @@
 //    }];
 //    [dataTask resume];
 //}
+
+
+#pragma mark - 这个方法可以禁止横屏
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 
 #pragma mark - 将进入后台
