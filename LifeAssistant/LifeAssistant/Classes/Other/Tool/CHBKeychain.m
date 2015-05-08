@@ -28,6 +28,8 @@
     //添加物品到钥匙圈与搜索字典
     SecItemAdd((__bridge_retained CFDictionaryRef)keychainQuery, NULL);
     
+    [keychainQuery removeAllObjects];
+    keychainQuery = nil;
 }
 
 + (id)load:(NSString *)service
@@ -63,6 +65,9 @@
 {
     NSMutableDictionary *keychainQuery = [self getKeychainQuery:service];
     SecItemDelete((__bridge_retained CFDictionaryRef)keychainQuery);
+    
+    [keychainQuery removeAllObjects];
+    keychainQuery = nil;
 }
 
 @end

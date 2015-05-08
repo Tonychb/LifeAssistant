@@ -14,6 +14,8 @@
 
 @property (nonatomic,strong) UIButton *clearButton; //清除按钮
 
+@property (nonatomic,strong) UIButton *microphoneButton; //麦克风按钮
+
 @property (nonatomic,strong) UIToolbar *textViewToolBar; //在弹出的键盘上面加一个view
 
 @end
@@ -95,6 +97,7 @@
     [self.clearButton addTarget:self action:@selector(clearButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [textViewBGView addSubview:self.clearButton];
     [textViewBGView bringSubviewToFront:self.clearButton];
+    
     //***************输入要翻译的文本视图***************
     self.toBeTranslationTV = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(textViewBGView.frame) - clearButtonSize.width - 5, CGRectGetHeight(textViewBGView.frame))];
     self.toBeTranslationTV.backgroundColor = [UIColor whiteColor];
@@ -124,13 +127,23 @@
     self.textViewplaceholder.backgroundColor = [UIColor clearColor];
     [textViewBGView addSubview:self.textViewplaceholder];
     
+    //***************麦克风按钮***************
+    UIImage *microImage = [UIImage imageNamed:@"micro_normal"];
+    CGSize microButtonSize = microImage.size;
+    _microphoneButton = [[UIButton alloc]initWithFrame:(CGRect){CGPointZero,microButtonSize}];
+    [_microphoneButton setImage:microImage forState:UIControlStateNormal];
+    [_microphoneButton addTarget:self action:@selector(microphoneButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
+    
     //***************在弹出的键盘上面加一个view***************
     self.textViewToolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, kScreenSize.width, 44)];
     [self.textViewToolBar setBarStyle:UIBarStyleDefault];
-    UIBarButtonItem * helloButton = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(dismissKeyBoard)];
-    UIBarButtonItem * btnSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    UIBarButtonItem * doneButton = [[UIBarButtonItem alloc]initWithTitle:@"翻译" style:UIBarButtonItemStyleDone target:self action:@selector(toTranslation)];
-    NSArray * buttonsArray = [NSArray arrayWithObjects:helloButton,btnSpace,doneButton,nil];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(dismissKeyBoard)];
+    UIBarButtonItem *flexibleSpaceBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *microphoneButton = [[UIBarButtonItem alloc]initWithCustomView:_microphoneButton];
+    UIBarButtonItem *flexibleSpace1Btn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"翻译" style:UIBarButtonItemStyleDone target:self action:@selector(toTranslation)];
+    NSArray * buttonsArray = [NSArray arrayWithObjects:cancelButton,flexibleSpaceBtn,microphoneButton,flexibleSpace1Btn,doneButton,nil];
     [self.textViewToolBar setItems:buttonsArray];
     [self.toBeTranslationTV setInputAccessoryView:self.textViewToolBar];
     
@@ -170,6 +183,34 @@
     self.toBeTranslationTV.text = @"";
     self.textViewplaceholder.text = @"请输入要翻译的文字";
     sender.hidden = YES;
+}
+
+#pragma mark - 麦克风按钮点击事件
+- (void)microphoneButtonClick:(id)sender {
+    
+    if (self.toBeTranslationTV.isFirstResponder)
+    {
+        [self.toBeTranslationTV resignFirstResponder];
+        
+        if (self.toBeTranslationTV.text.length == 0)
+        {
+            self.textViewplaceholder.text = @"请输入要翻译的文字";
+            self.clearButton.hidden = YES;
+        }
+        else
+        {
+            self.toBeTranslationTV.text = @"";
+            self.textViewplaceholder.text = @"请输入要翻译的文字";
+            self.clearButton.hidden = YES;
+        }
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(translationContentViewForMicrophoneButtonClick)])
+    {
+        [self.delegate translationContentViewForMicrophoneButtonClick];
+    }
+    
+
 }
 
 #pragma mark - UIToolbar上的按钮点击事件

@@ -28,7 +28,7 @@
     [self addPushNotificationSwitch];
 }
 
-#pragma mark - 添加开关按钮
+#pragma mark - 添加推送通知开关
 - (void)addPushNotificationSwitch
 {
     UILabel *title = [[UILabel alloc]init];
@@ -107,7 +107,7 @@
 
 }
 
-
+#pragma mark - 开关按钮事件
 - (void) switchValueChanged:(id)sender
 {
     UISwitch* switchControl = (UISwitch*)sender;

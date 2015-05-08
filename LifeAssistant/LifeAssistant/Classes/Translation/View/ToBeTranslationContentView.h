@@ -17,6 +17,7 @@
 - (void)translationContentViewForSourceLanguageBtnClick;
 - (void)translationContentViewForTargetLanguageBtnClick;
 - (void)translationContentViewSwitchingBetweenLanguages;
+- (void)translationContentViewForMicrophoneButtonClick;
 
 @end
 

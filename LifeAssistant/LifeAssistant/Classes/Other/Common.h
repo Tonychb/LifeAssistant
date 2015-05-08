@@ -63,14 +63,15 @@
 #define IS_IOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0f
 
 
-// 用MyLog替代NSLog，调试时输出日志，正式发布时自动取消日志输出代码
+// 用MyLog替代NSLog，调试时输出日志(文件名、行号、函数名)，正式发布时自动取消日志输出代码
+//"##"的特殊用法：将"##"放在","和参数之间，那么如果参数留空的话，那么"##"前面的","就会删掉，从而防止编译错误。
 #ifdef DEBUG
 
-#define MyLog(...) NSLog(__VA_ARGS__)   //调试状态
+#define MyLog(format,...)     do { NSLog(@"< 文件名:%@ 行号:%d 函数名:%s > -: %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__,__PRETTY_FUNCTION__, [NSString stringWithFormat:format, ##__VA_ARGS__]); } while(0)     //调试状态
 
 #else
 
-#define MyLog(...)  //打包发布
+#define MyLog(...)  do { } while(0)//打包发布
 
 #endif
 
