@@ -10,10 +10,6 @@
 
 @interface ToBeTranslationContentView ()<UITextViewDelegate>
 
-@property (nonatomic,strong) UILabel *textViewplaceholder;  //占位符
-
-@property (nonatomic,strong) UIButton *clearButton; //清除按钮
-
 @property (nonatomic,strong) UIButton *microphoneButton; //麦克风按钮
 
 @property (nonatomic,strong) UIToolbar *textViewToolBar; //在弹出的键盘上面加一个view
@@ -290,16 +286,20 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
     //MyLog(@"textViewDidChange:方法-->内容发生改变");
-    if (textView.text.length == 0)
+    if (textView == self.toBeTranslationTV)
     {
-        self.textViewplaceholder.text = @"请输入要翻译的文字";
-        self.clearButton.hidden = YES;
+        if (textView.text.length == 0)
+        {
+            self.textViewplaceholder.text = @"请输入要翻译的文字";
+            self.clearButton.hidden = YES;
+        }
+        else
+        {
+            self.textViewplaceholder.text = @"";
+            self.clearButton.hidden = NO;
+        }
     }
-    else
-    {
-        self.textViewplaceholder.text = @"";
-        self.clearButton.hidden = NO;
-    }
+
     
     //    NSInteger number = [textView.text length];
     //    if (number > 130)

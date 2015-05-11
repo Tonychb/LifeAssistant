@@ -26,7 +26,7 @@
 @property (nonatomic,strong) TranslationModel *translationModel; //翻译数据模型
 @property (nonatomic,strong) DictionaryModel *dictionaryModel; //词典数据模型
 @property (nonatomic,strong) DictCellFrame *dictCellFrame;//词典视图框架模型
-
+@property (nonatomic,strong) BDRecognizerViewController *recognizerViewController;//语音识别弹窗视图控件对象
 
 
 @end
@@ -177,7 +177,7 @@
         }
     }
     
-    NSDictionary *paramsDict = [[NSDictionary alloc]init];
+    NSMutableDictionary *paramsDict = [NSMutableDictionary dictionary];
     [paramsDict setValue:kBaiduAPIKey forKey:@"client_id"];
     if (srcString != nil && ![srcString isEqual:[NSNull null]]) {
         [paramsDict setValue:srcString forKey:@"q"];
@@ -419,12 +419,12 @@
 - (void)translationContentViewForMicrophoneButtonClick
 {
     //创建识别控件对象,第一个参数为识别控件的在屏幕中的起始位置,识别控件会添加到当前的keyWindow 上。
-    BDRecognizerViewController *recognizerViewController = [[BDRecognizerViewController alloc]initWithOrigin:CGPointMake(9, 128) withTheme:[BDTheme lightBlueTheme]];
+    _recognizerViewController = [[BDRecognizerViewController alloc]initWithOrigin:CGPointMake(9, 128) withTheme:[BDTheme lightBlueTheme]];
     //实现协议,识别结果delegate
-    recognizerViewController.delegate = self;
+    _recognizerViewController.delegate = self;
     
     //设置是否全屏模式
-    recognizerViewController.enableFullScreenMode = NO;
+    _recognizerViewController.enableFullScreenMode = NO;
     
     //设置语音识别弹窗参数配置类
     BDRecognizerViewParamsObject *paramsObject = [[BDRecognizerViewParamsObject alloc]init];
@@ -475,31 +475,25 @@
     paramsObject.isNeedCompress = NO;
     
     //启动识别
-    [recognizerViewController startWithParams:paramsObject];
+    [_recognizerViewController startWithParams:paramsObject];
 }
 
 #pragma mark - BDRecognizerViewDelegate语音弹窗UI的委托接口
 - (void)onEndWithViews:(BDRecognizerViewController *)aBDRecognizerViewController withResults:(NSArray *)aResults {
-    
-    _toBeTranslationView.toBeTranslationTV.text = @"";
     
     if ([[BDVoiceRecognitionClient sharedInstance] getRecognitionProperty] != EVoiceRecognitionPropertyInput)
     {
         // 在非输入模式下,当 isNeedNLU = NO 时,结果是一个候选句列表,为 NSArray,
         // 元素是 NSString,例如["公园", "公元"]
         // 当 isNeedNLU = YES 时,结果类型仍为 NSArray,只有一个 NSString 元素, // 内容是 JSON 串,开发者需要自行解析,解析方法请参考语义解析文档
-        //NSMutableString *tmpString = [aResults objectAtIndex:0];
-        NSMutableArray *audioResultData = (NSMutableArray *)aResults;
-        NSMutableString *tmpString = [[NSMutableString alloc] initWithString:@""];
+        NSMutableString *tmpString = [aResults objectAtIndex:0];
+    
+        _toBeTranslationView.textViewplaceholder.text = @"";
+        _toBeTranslationView.clearButton.hidden = NO;
+        _toBeTranslationView.toBeTranslationTV.text = tmpString;
         
-        for (int i=0; i < [audioResultData count]; i++)
-        {
-            [tmpString appendFormat:@"%@\r\n",[audioResultData objectAtIndex:i]];
-        }
-        
-        _toBeTranslationView.toBeTranslationTV.text = [_toBeTranslationView.toBeTranslationTV.text stringByAppendingString:tmpString];
-        _toBeTranslationView.toBeTranslationTV.text = [_toBeTranslationView.toBeTranslationTV.text stringByAppendingString:@"\n"];
-        
+        [self toTranslateTheString:tmpString];
+    
     }
     else
     {
@@ -521,190 +515,9 @@
         //         }
         //      ],
         //   ]
-        NSString *tmpString = [self composeInputModeResult:aResults];
-        
-        _toBeTranslationView.toBeTranslationTV.text = [_toBeTranslationView.toBeTranslationTV.text stringByAppendingString:tmpString];
-        _toBeTranslationView.toBeTranslationTV.text = [_toBeTranslationView.toBeTranslationTV.text stringByAppendingString:@"\n"];
+
     }
     
-}
-
-#pragma mark    语音识别工作状态通知（接收语音识别结果）
-- (void)VoiceRecognitionClientWorkStatus:(int) aStatus obj:(id)aObj
-{
-    switch (aStatus)
-    {
-        case EVoiceRecognitionClientWorkStatusFinish:// 语音识别功能完成，服务器返回正确结果
-        {
-            // 该状态值表示语音识别服务器返回了最终结果,结果以数组的形式保存在 aObj 对象中
-            // 接受到该消息时应当清空显示区域的文字以免重复
-            if ([[BDVoiceRecognitionClient sharedInstance] getRecognitionProperty] != EVoiceRecognitionPropertyInput)
-            {
-                NSMutableArray *audioResultData = (NSMutableArray *)aObj;
-                NSMutableString *tmpString = [[NSMutableString alloc] initWithString:@""];
-                
-                // 获取识别候选词列表
-                for (int i=0; i<[audioResultData count]; i++)
-                {
-                    [tmpString appendFormat:@"%@\r\n",[audioResultData objectAtIndex:i]];
-                }
-                _toBeTranslationView.toBeTranslationTV.text = @"";
-                [self logOutToManualResut:tmpString];
-            }
-            else
-            {
-                _toBeTranslationView.toBeTranslationTV.text = @"";
-                NSString *tmpString = [self composeInputModeResult:aObj];
-                [self logOutToManualResut:tmpString];
-            }
-            MyLog(@"识别完成");
-            break;
-        }
-        case EVoiceRecognitionClientWorkStatusFlushData: //连续上屏
-        {
-            // 该状态值表示服务器返回了中间结果,如果想要将中间结果展示给用户(形成连续上屏的效果),
-            // 可以利用与该状态同时返回的数据,每当接到新的该类消息应当清空显示区域的文字以免重复
-            NSMutableString *tmpString = [[NSMutableString alloc] initWithString:@""];
-            
-            [tmpString appendFormat:@"%@",[aObj objectAtIndex:0]];
-            _toBeTranslationView.toBeTranslationTV.text = @"";
-            [self logOutToManualResut:tmpString];
-            
-            break;
-        }
-        case EVoiceRecognitionClientWorkStatusReceiveData: // 输入模式下有识别结果返回
-        {
-            // 此状态只在输入模式下发生,表示语音识别正确返回结果,每个子句会通知一次(全量,
-            // 即第二次收到该消息时所携带的结果包含第一句的识别结果),应用程序可以
-            // 逐句显示。配合连续上屏的中间结果,可以进一步提升语音输入的体验
-            
-            if ([[BDVoiceRecognitionClient sharedInstance] getRecognitionProperty] == EVoiceRecognitionPropertyInput)
-            {
-                _toBeTranslationView.toBeTranslationTV.text = @"";
-                NSString *tmpString = [self composeInputModeResult:aObj];
-                [self logOutToManualResut:tmpString];
-            }
-            
-            break;
-        }
-        case EVoiceRecognitionClientWorkStatusEnd: // 本地声音采集结束结束，等待识别结果返回并结束录音
-        {
-            // 用户说话完成,但服务器尚未返回结果
-            
-            break;
-        }
-            
-        case EVoiceRecognitionClientWorkStatusNewRecordData: // 录音数据回调
-        {
-            // 有音频数据输出,音频数据格式为 PCM,在有 WiFi 连接的条件下为 16k16bit,非 WiFi
-            // 为 8k16bit
-            break;
-        }
-            
-        case EVoiceRecognitionClientWorkStatusCancel:
-        {
-            // 用户主动取消
-            break;
-        }
-            
-        case EVoiceRecognitionClientWorkStatusError:
-        {
-            // 错误状态
-            break;
-        }
-            
-        default:
-        {
-            break;
-        }
-    }
-}
-
-//如果应用程序需要监听 BDVRClient 识别过程中的网络状态,需要实现如下方法
-- (void)VoiceRecognitionClientNetWorkStatus:(int) aStatus {
-    switch (aStatus)
-    {
-        case EVoiceRecognitionClientNetWorkStatusStart:
-        {
-            // 底层网络通讯模块通讯开始,用户可以在状态条中显示菊花转等等,提示用户
-            break;
-        }
-        case EVoiceRecognitionClientNetWorkStatusEnd:
-        {
-            // 底层网络通讯模块通讯完成,同样此状态可以在 UI 上给用户提示
-            break;
-        }
-            
-        default:
-        {
-            break;
-        }
-    }
-}
-
-//BDVRClient 识别中发生错误后,如果应用程序需要得到更加详细的错误信息,需要实现如下方法
-- (void)VoiceRecognitionClientErrorStatus:(int) aStatus subStatus:(int)aSubStatus {
-    
-    switch (aStatus)
-    {
-        case EVoiceRecognitionClientErrorStatusClassVDP:    // 语音数据处理过程出错
-        {
-            //语音数据处理出错
-            switch (aSubStatus)
-            {
-                case EVoiceRecognitionClientErrorStatusNoSpeech:
-                {
-                    //用户未说话
-                    break;
-                }
-                    //其他 case
-            }
-            break;
-        }
-        case EVoiceRecognitionClientErrorStatusClassRecord:
-        {
-            // 录音出错
-            break;
-        }
-        case EVoiceRecognitionClientErrorStatusClassLocalNet: // 本地网络联接出错
-        {
-            // 网络出错
-            break;
-        }
-        case EVoiceRecognitionClientErrorStatusClassServerNet: // 服务器返回网络错误
-        {
-            // 服务器返回错误
-            break;
-        }
-    }
-}
-
-#pragma mark 私有方法（撰写输入模式结果）
-- (NSString *)composeInputModeResult:(id)aObj
-{
-    NSMutableString *tmpString = [[NSMutableString alloc] initWithString:@""];
-    for (NSArray *result in aObj)
-    {
-        NSDictionary *dic = [result objectAtIndex:0];
-        NSString *candidateWord = [[dic allKeys] objectAtIndex:0];
-        [tmpString appendString:candidateWord];
-    }
-    
-    return tmpString;
-}
-#pragma mark    注销以手动Resut
-- (void)logOutToManualResut:(NSString *)aResult
-{
-    NSString *tmpString = _toBeTranslationView.toBeTranslationTV.text;
-    
-    if (tmpString == nil || [tmpString isEqualToString:@""])
-    {
-        _toBeTranslationView.toBeTranslationTV.text = aResult;
-    }
-    else
-    {
-        _toBeTranslationView.toBeTranslationTV.text = [_toBeTranslationView.toBeTranslationTV.text stringByAppendingString:aResult];
-    }
 }
 
 

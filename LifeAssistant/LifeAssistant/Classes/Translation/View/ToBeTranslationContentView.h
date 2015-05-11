@@ -26,22 +26,37 @@
  */
 @interface ToBeTranslationContentView : UIView
 
+
 /**
  *  源语言
  */
 @property (nonatomic,strong) UIButton *sourceLanguageBtn;
+
 /**
  *  目标语言
  */
 @property (nonatomic,strong) UIButton *targetLanguageBtn;
+
 /**
  *  切换语言
  */
 @property (nonatomic,strong) UIButton *switchLanguageBtn;
+
 /**
  *  输入要翻译的文本视图
  */
 @property (nonatomic,strong) UITextView *toBeTranslationTV;
+
+/**
+ *  文本视图的占位符字符串
+ */
+@property (nonatomic,strong) UILabel *textViewplaceholder;
+
+/**
+ *  清除按钮
+ */
+@property (nonatomic,strong) UIButton *clearButton;
+
 /**
  *  当前视图高度
  */

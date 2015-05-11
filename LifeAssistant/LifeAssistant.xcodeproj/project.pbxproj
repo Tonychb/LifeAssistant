@@ -29,21 +29,6 @@
 		81722ED01AF9C75300D69B1C /* UIViewController+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 81722DD71AF9C75300D69B1C /* UIViewController+MethodSwizzling.m */; };
 		81722ED11AF9C75300D69B1C /* UIWebView+Clean.m in Sources */ = {isa = PBXBuildFile; fileRef = 81722DD91AF9C75300D69B1C /* UIWebView+Clean.m */; };
 		81722ED21AF9C75300D69B1C /* JLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81722DDD1AF9C75300D69B1C /* JLNavigationController.m */; };
-		81722ED31AF9C75300D69B1C /* darkBlue.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81722DE71AF9C75300D69B1C /* darkBlue.bundle */; };
-		81722ED41AF9C75300D69B1C /* darkGreen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81722DE81AF9C75300D69B1C /* darkGreen.bundle */; };
-		81722ED51AF9C75300D69B1C /* darkOrange.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81722DE91AF9C75300D69B1C /* darkOrange.bundle */; };
-		81722ED61AF9C75300D69B1C /* darkRed.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81722DEA1AF9C75300D69B1C /* darkRed.bundle */; };
-		81722ED71AF9C75300D69B1C /* defaultFullScreenTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81722DEB1AF9C75300D69B1C /* defaultFullScreenTheme.bundle */; };
-		81722ED81AF9C75300D69B1C /* defaultTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81722DEC1AF9C75300D69B1C /* defaultTheme.bundle */; };
-		81722ED91AF9C75300D69B1C /* lightBlue.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81722DED1AF9C75300D69B1C /* lightBlue.bundle */; };
-		81722EDA1AF9C75300D69B1C /* lightGreen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81722DEE1AF9C75300D69B1C /* lightGreen.bundle */; };
-		81722EDB1AF9C75300D69B1C /* lightOrange.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81722DEF1AF9C75300D69B1C /* lightOrange.bundle */; };
-		81722EDC1AF9C75300D69B1C /* lightRed.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81722DF01AF9C75300D69B1C /* lightRed.bundle */; };
-		81722EDD1AF9C75300D69B1C /* record_cancel.caf in Resources */ = {isa = PBXBuildFile; fileRef = 81722DF21AF9C75300D69B1C /* record_cancel.caf */; };
-		81722EDE1AF9C75300D69B1C /* record_end.caf in Resources */ = {isa = PBXBuildFile; fileRef = 81722DF31AF9C75300D69B1C /* record_end.caf */; };
-		81722EDF1AF9C75300D69B1C /* record_fail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 81722DF41AF9C75300D69B1C /* record_fail.caf */; };
-		81722EE01AF9C75300D69B1C /* record_start.caf in Resources */ = {isa = PBXBuildFile; fileRef = 81722DF51AF9C75300D69B1C /* record_start.caf */; };
-		81722EE11AF9C75300D69B1C /* record_success.caf in Resources */ = {isa = PBXBuildFile; fileRef = 81722DF61AF9C75300D69B1C /* record_success.caf */; };
 		81722EE21AF9C75300D69B1C /* CADebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81722DFC1AF9C75300D69B1C /* CADebugMacros.cpp */; };
 		81722EE31AF9C75300D69B1C /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81722DFF1AF9C75300D69B1C /* CAStreamBasicDescription.cpp */; };
 		81722EE41AF9C75300D69B1C /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81722E011AF9C75300D69B1C /* CAXException.cpp */; };
@@ -138,6 +123,7 @@
 		81722F711AF9D0DB00D69B1C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB53B475162DE38A0945BE8 /* libPods.a */; };
 		81722F731AF9D10C00D69B1C /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81722F721AF9D10C00D69B1C /* libz.1.dylib */; };
 		81722F751AF9D11A00D69B1C /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81722F741AF9D11A00D69B1C /* libz.1.2.5.dylib */; };
+		81BE49F01B004E000007B67A /* BDVoiceRecognitionClientResources in Resources */ = {isa = PBXBuildFile; fileRef = 81BE49EF1B004E000007B67A /* BDVoiceRecognitionClientResources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,21 +185,6 @@
 		81722DE21AF9C75300D69B1C /* BDRecognizerViewParamsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDRecognizerViewParamsObject.h; sourceTree = "<group>"; };
 		81722DE31AF9C75300D69B1C /* BDTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDTheme.h; sourceTree = "<group>"; };
 		81722DE41AF9C75300D69B1C /* BDVoiceRecognitionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVoiceRecognitionClient.h; sourceTree = "<group>"; };
-		81722DE71AF9C75300D69B1C /* darkBlue.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = darkBlue.bundle; sourceTree = "<group>"; };
-		81722DE81AF9C75300D69B1C /* darkGreen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = darkGreen.bundle; sourceTree = "<group>"; };
-		81722DE91AF9C75300D69B1C /* darkOrange.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = darkOrange.bundle; sourceTree = "<group>"; };
-		81722DEA1AF9C75300D69B1C /* darkRed.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = darkRed.bundle; sourceTree = "<group>"; };
-		81722DEB1AF9C75300D69B1C /* defaultFullScreenTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = defaultFullScreenTheme.bundle; sourceTree = "<group>"; };
-		81722DEC1AF9C75300D69B1C /* defaultTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = defaultTheme.bundle; sourceTree = "<group>"; };
-		81722DED1AF9C75300D69B1C /* lightBlue.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lightBlue.bundle; sourceTree = "<group>"; };
-		81722DEE1AF9C75300D69B1C /* lightGreen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lightGreen.bundle; sourceTree = "<group>"; };
-		81722DEF1AF9C75300D69B1C /* lightOrange.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lightOrange.bundle; sourceTree = "<group>"; };
-		81722DF01AF9C75300D69B1C /* lightRed.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lightRed.bundle; sourceTree = "<group>"; };
-		81722DF21AF9C75300D69B1C /* record_cancel.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_cancel.caf; sourceTree = "<group>"; };
-		81722DF31AF9C75300D69B1C /* record_end.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_end.caf; sourceTree = "<group>"; };
-		81722DF41AF9C75300D69B1C /* record_fail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_fail.caf; sourceTree = "<group>"; };
-		81722DF51AF9C75300D69B1C /* record_start.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_start.caf; sourceTree = "<group>"; };
-		81722DF61AF9C75300D69B1C /* record_success.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_success.caf; sourceTree = "<group>"; };
 		81722DF71AF9C75300D69B1C /* BDVRDataUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRDataUploader.h; sourceTree = "<group>"; };
 		81722DF81AF9C75300D69B1C /* BDVRFileRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRFileRecognizer.h; sourceTree = "<group>"; };
 		81722DF91AF9C75300D69B1C /* BDVRRawDataRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRRawDataRecognizer.h; sourceTree = "<group>"; };
@@ -360,6 +331,7 @@
 		81722F6F1AF9D0BB00D69B1C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		81722F721AF9D10C00D69B1C /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = usr/lib/libz.1.dylib; sourceTree = SDKROOT; };
 		81722F741AF9D11A00D69B1C /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		81BE49EF1B004E000007B67A /* BDVoiceRecognitionClientResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BDVoiceRecognitionClientResources; sourceTree = "<group>"; };
 		D5C86219059531563069A0CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBB53B475162DE38A0945BE8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -587,54 +559,16 @@
 				81722DE21AF9C75300D69B1C /* BDRecognizerViewParamsObject.h */,
 				81722DE31AF9C75300D69B1C /* BDTheme.h */,
 				81722DE41AF9C75300D69B1C /* BDVoiceRecognitionClient.h */,
-				81722DE51AF9C75300D69B1C /* BDVoiceRecognitionClientResources */,
 				81722DF71AF9C75300D69B1C /* BDVRDataUploader.h */,
 				81722DF81AF9C75300D69B1C /* BDVRFileRecognizer.h */,
 				81722DF91AF9C75300D69B1C /* BDVRRawDataRecognizer.h */,
 				81722DFA1AF9C75300D69B1C /* BDVRUIPromptTextCustom.h */,
+				81BE49EF1B004E000007B67A /* BDVoiceRecognitionClientResources */,
 				81722DFB1AF9C75300D69B1C /* CoreAudioUtility */,
 				81722E031AF9C75300D69B1C /* JSONKit-master */,
 				81722E061AF9C75300D69B1C /* TTTAttributedLabel */,
 			);
 			path = BDVRClient;
-			sourceTree = "<group>";
-		};
-		81722DE51AF9C75300D69B1C /* BDVoiceRecognitionClientResources */ = {
-			isa = PBXGroup;
-			children = (
-				81722DE61AF9C75300D69B1C /* Theme */,
-				81722DF11AF9C75300D69B1C /* Tone */,
-			);
-			path = BDVoiceRecognitionClientResources;
-			sourceTree = "<group>";
-		};
-		81722DE61AF9C75300D69B1C /* Theme */ = {
-			isa = PBXGroup;
-			children = (
-				81722DE71AF9C75300D69B1C /* darkBlue.bundle */,
-				81722DE81AF9C75300D69B1C /* darkGreen.bundle */,
-				81722DE91AF9C75300D69B1C /* darkOrange.bundle */,
-				81722DEA1AF9C75300D69B1C /* darkRed.bundle */,
-				81722DEB1AF9C75300D69B1C /* defaultFullScreenTheme.bundle */,
-				81722DEC1AF9C75300D69B1C /* defaultTheme.bundle */,
-				81722DED1AF9C75300D69B1C /* lightBlue.bundle */,
-				81722DEE1AF9C75300D69B1C /* lightGreen.bundle */,
-				81722DEF1AF9C75300D69B1C /* lightOrange.bundle */,
-				81722DF01AF9C75300D69B1C /* lightRed.bundle */,
-			);
-			path = Theme;
-			sourceTree = "<group>";
-		};
-		81722DF11AF9C75300D69B1C /* Tone */ = {
-			isa = PBXGroup;
-			children = (
-				81722DF21AF9C75300D69B1C /* record_cancel.caf */,
-				81722DF31AF9C75300D69B1C /* record_end.caf */,
-				81722DF41AF9C75300D69B1C /* record_fail.caf */,
-				81722DF51AF9C75300D69B1C /* record_start.caf */,
-				81722DF61AF9C75300D69B1C /* record_success.caf */,
-			);
-			path = Tone;
 			sourceTree = "<group>";
 		};
 		81722DFB1AF9C75300D69B1C /* CoreAudioUtility */ = {
@@ -1062,25 +996,17 @@
 				81722F411AF9C79300D69B1C /* it.png in Resources */,
 				81722F3C1AF9C79300D69B1C /* auto.png in Resources */,
 				81722F381AF9C79300D69B1C /* config_selected@3x.png in Resources */,
-				81722EDB1AF9C75300D69B1C /* lightOrange.bundle in Resources */,
 				81722F401AF9C79300D69B1C /* fra.png in Resources */,
 				81722F4C1AF9C79300D69B1C /* global_normal@2x.png in Resources */,
-				81722EE11AF9C75300D69B1C /* record_success.caf in Resources */,
 				81722F4F1AF9C79300D69B1C /* global_selected@3x.png in Resources */,
-				81722ED91AF9C75300D69B1C /* lightBlue.bundle in Resources */,
-				81722EE01AF9C75300D69B1C /* record_start.caf in Resources */,
 				81722F361AF9C79300D69B1C /* config_normal@3x.png in Resources */,
 				812928091AFC941B00E912E3 /* micro_normal@3x.png in Resources */,
 				81722F371AF9C79300D69B1C /* config_selected@2x.png in Resources */,
 				812928081AFC941B00E912E3 /* micro_normal@2x.png in Resources */,
-				81722ED71AF9C75300D69B1C /* defaultFullScreenTheme.bundle in Resources */,
 				81722F3A1AF9C79300D69B1C /* dismiss@3x.png in Resources */,
-				81722EDF1AF9C75300D69B1C /* record_fail.caf in Resources */,
-				81722EDC1AF9C75300D69B1C /* lightRed.bundle in Resources */,
 				81722F541AF9C79300D69B1C /* switch_selected@3x.png in Resources */,
-				81722ED41AF9C75300D69B1C /* darkGreen.bundle in Resources */,
 				81722F461AF9C79300D69B1C /* ru.png in Resources */,
-				81722EDD1AF9C75300D69B1C /* record_cancel.caf in Resources */,
+				81BE49F01B004E000007B67A /* BDVoiceRecognitionClientResources in Resources */,
 				81722F491AF9C79300D69B1C /* wyw.png in Resources */,
 				81722F3E1AF9C79300D69B1C /* el.png in Resources */,
 				81722F531AF9C79300D69B1C /* switch_selected@2x.png in Resources */,
@@ -1089,7 +1015,6 @@
 				81722F331AF9C79300D69B1C /* bar@2x.png in Resources */,
 				81722F501AF9C79300D69B1C /* lifeassistant.png in Resources */,
 				81722F421AF9C79300D69B1C /* jp.png in Resources */,
-				81722ED31AF9C75300D69B1C /* darkBlue.bundle in Resources */,
 				8129280C1AFC944C00E912E3 /* micro_selected@2x.png in Resources */,
 				81722F341AF9C79300D69B1C /* clearbutton@2x.png in Resources */,
 				81722F4B1AF9C79300D69B1C /* zh.png in Resources */,
@@ -1097,20 +1022,15 @@
 				81722F441AF9C79300D69B1C /* nl.png in Resources */,
 				81722F3B1AF9C79300D69B1C /* ara.png in Resources */,
 				81722F431AF9C79300D69B1C /* kor.png in Resources */,
-				81722EDE1AF9C75300D69B1C /* record_end.caf in Resources */,
 				81722F3D1AF9C79300D69B1C /* de.png in Resources */,
 				81722F471AF9C79300D69B1C /* spa.png in Resources */,
 				81722F3F1AF9C79300D69B1C /* en.png in Resources */,
 				81722F4D1AF9C79300D69B1C /* global_normal@3x.png in Resources */,
-				81722ED81AF9C75300D69B1C /* defaultTheme.bundle in Resources */,
 				81722F571AF9C80900D69B1C /* LanguageEncoding.plist in Resources */,
 				8129280D1AFC944C00E912E3 /* micro_selected@3x.png in Resources */,
 				81722F391AF9C79300D69B1C /* dismiss@2x.png in Resources */,
-				81722ED61AF9C75300D69B1C /* darkRed.bundle in Resources */,
 				81722F4A1AF9C79300D69B1C /* yue.png in Resources */,
 				81722F521AF9C79300D69B1C /* switch_normal@3x.png in Resources */,
-				81722ED51AF9C75300D69B1C /* darkOrange.bundle in Resources */,
-				81722EDA1AF9C75300D69B1C /* lightGreen.bundle in Resources */,
 				81722F511AF9C79300D69B1C /* switch_normal@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
