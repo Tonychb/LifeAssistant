@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "HomeViewController.h"
 #import "MainTabBarController.h"
 
 @interface AppDelegate ()
@@ -59,7 +60,7 @@
         application.statusBarHidden = NO;
         
         //***********主界面***********
-        self.window.rootViewController = [[MainTabBarController alloc]init];
+        self.window.rootViewController = [[HomeViewController alloc]init];
     }
     else
     {
@@ -72,7 +73,7 @@
         MyLog(@"第一次使用该版本");
         //第一次使用该版本就进入新特性界面
         
-        self.window.rootViewController = [[MainTabBarController alloc]init];
+        self.window.rootViewController = [[HomeViewController alloc]init];
     }
     //********************************************************************
     

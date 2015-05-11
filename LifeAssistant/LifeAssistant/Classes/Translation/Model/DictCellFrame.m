@@ -87,7 +87,7 @@
         }
         else
         {
-            partStr = [NSString stringWithFormat:@"%@ %@",parts.part,mutableString];
+            partStr = [NSString stringWithFormat:@"<%@> %@",parts.part,mutableString];
         }
         
         if (i == symbols.parts.count - 1)

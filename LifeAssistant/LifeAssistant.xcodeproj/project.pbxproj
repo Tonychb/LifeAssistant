@@ -124,6 +124,9 @@
 		81722F731AF9D10C00D69B1C /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81722F721AF9D10C00D69B1C /* libz.1.dylib */; };
 		81722F751AF9D11A00D69B1C /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81722F741AF9D11A00D69B1C /* libz.1.2.5.dylib */; };
 		81BE49F01B004E000007B67A /* BDVoiceRecognitionClientResources in Resources */ = {isa = PBXBuildFile; fileRef = 81BE49EF1B004E000007B67A /* BDVoiceRecognitionClientResources */; };
+		81BE49F51B008A400007B67A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BE49F41B008A400007B67A /* HomeViewController.m */; };
+		81BE49FD1B0090B70007B67A /* HomeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BE49FC1B0090B70007B67A /* HomeItem.m */; };
+		81BE49FF1B009A420007B67A /* lifeassistant_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BE49FE1B009A420007B67A /* lifeassistant_1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -332,6 +335,11 @@
 		81722F721AF9D10C00D69B1C /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = usr/lib/libz.1.dylib; sourceTree = SDKROOT; };
 		81722F741AF9D11A00D69B1C /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		81BE49EF1B004E000007B67A /* BDVoiceRecognitionClientResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BDVoiceRecognitionClientResources; sourceTree = "<group>"; };
+		81BE49F31B008A400007B67A /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		81BE49F41B008A400007B67A /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		81BE49FB1B0090B70007B67A /* HomeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItem.h; sourceTree = "<group>"; };
+		81BE49FC1B0090B70007B67A /* HomeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItem.m; sourceTree = "<group>"; };
+		81BE49FE1B009A420007B67A /* lifeassistant_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifeassistant_1.png; sourceTree = "<group>"; };
 		D5C86219059531563069A0CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBB53B475162DE38A0945BE8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -443,6 +451,7 @@
 			children = (
 				81722E411AF9C75300D69B1C /* RegisterAndLogin */,
 				81722CEA1AF9C75200D69B1C /* Main */,
+				81BE49F11B0089F60007B67A /* Home */,
 				81722E4A1AF9C75300D69B1C /* Translation */,
 				81722E461AF9C75300D69B1C /* Settings */,
 				81722CF31AF9C75200D69B1C /* Other */,
@@ -792,9 +801,9 @@
 		81722E571AF9C75300D69B1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				81722E581AF9C75300D69B1C /* DataModel.h */,
 				81722E591AF9C75300D69B1C /* DictCellFrame.h */,
 				81722E5A1AF9C75300D69B1C /* DictCellFrame.m */,
+				81722E581AF9C75300D69B1C /* DataModel.h */,
 				81722E5B1AF9C75300D69B1C /* DictData.h */,
 				81722E5C1AF9C75300D69B1C /* DictData.m */,
 				81722E5D1AF9C75300D69B1C /* DictionaryModel.h */,
@@ -830,6 +839,7 @@
 				81722F551AF9C7FA00D69B1C /* Data */,
 				81722F181AF9C79300D69B1C /* FlagIcon */,
 				81722F2E1AF9C79300D69B1C /* lifeassistant.png */,
+				81BE49FE1B009A420007B67A /* lifeassistant_1.png */,
 				81722F101AF9C79300D69B1C /* bar@2x.png */,
 				81722F111AF9C79300D69B1C /* clearbutton@2x.png */,
 				81722F121AF9C79300D69B1C /* config_normal@2x.png */,
@@ -884,6 +894,33 @@
 				81722F561AF9C80900D69B1C /* LanguageEncoding.plist */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		81BE49F11B0089F60007B67A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				81BE49FA1B0090750007B67A /* View */,
+				81BE49F21B008A2B0007B67A /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		81BE49F21B008A2B0007B67A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				81BE49F31B008A400007B67A /* HomeViewController.h */,
+				81BE49F41B008A400007B67A /* HomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		81BE49FA1B0090750007B67A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				81BE49FB1B0090B70007B67A /* HomeItem.h */,
+				81BE49FC1B0090B70007B67A /* HomeItem.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B74513B7877D9963C0CFFCC4 /* Frameworks */ = {
@@ -1009,6 +1046,7 @@
 				81BE49F01B004E000007B67A /* BDVoiceRecognitionClientResources in Resources */,
 				81722F491AF9C79300D69B1C /* wyw.png in Resources */,
 				81722F3E1AF9C79300D69B1C /* el.png in Resources */,
+				81BE49FF1B009A420007B67A /* lifeassistant_1.png in Resources */,
 				81722F531AF9C79300D69B1C /* switch_selected@2x.png in Resources */,
 				81722F481AF9C79300D69B1C /* th.png in Resources */,
 				8107F1941AF8B1630083F03F /* Images.xcassets in Resources */,
@@ -1089,6 +1127,7 @@
 				81722E6F1AF9C75300D69B1C /* MainTabBar.m in Sources */,
 				81722EE51AF9C75300D69B1C /* JSONKit.m in Sources */,
 				81722EFC1AF9C75300D69B1C /* IsRootViewController.m in Sources */,
+				81BE49FD1B0090B70007B67A /* HomeItem.m in Sources */,
 				81722EF21AF9C75300D69B1C /* SDCollectionViewCell.m in Sources */,
 				81722ECF1AF9C75300D69B1C /* UIView+Screenshot.m in Sources */,
 				81722EF11AF9C75300D69B1C /* TAPageControl.m in Sources */,
@@ -1125,6 +1164,7 @@
 				81722EE91AF9C75300D69B1C /* DLSlideView.m in Sources */,
 				81722E6E1AF9C75300D69B1C /* MainTabBarController.m in Sources */,
 				81722EFA1AF9C75300D69B1C /* HttpTool.m in Sources */,
+				81BE49F51B008A400007B67A /* HomeViewController.m in Sources */,
 				81722EE71AF9C75300D69B1C /* DLLRUCache.m in Sources */,
 				81722F071AF9C75300D69B1C /* DictionaryModel.m in Sources */,
 				81722F031AF9C75300D69B1C /* SelectLanguagesViewController.m in Sources */,

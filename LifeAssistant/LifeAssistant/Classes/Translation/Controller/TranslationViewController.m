@@ -435,9 +435,25 @@
     
     // 设置是否需要语义理解，只在搜索模式有效
     paramsObject.isNeedNLU = FALSE;
+
     
-    // 设置识别语言(普通话)
-    paramsObject.language = BDVoiceRecognitionLanguageChinese;
+    if ([self.toBeTranslationView.sourceLanguageBtn.titleLabel.text isEqualToString:@"中文"]) {
+        
+        // 设置识别语言(普通话)
+        paramsObject.language = BDVoiceRecognitionLanguageChinese;
+        
+    } else if ([self.toBeTranslationView.sourceLanguageBtn.titleLabel.text isEqualToString:@"英语"]) {
+        
+        // 设置识别语言(英文)
+        paramsObject.language = BDVoiceRecognitionLanguageEnglish;
+        
+    } else if ([self.toBeTranslationView.sourceLanguageBtn.titleLabel.text isEqualToString:@"粤语"]) {
+    
+        // 设置识别语言(粤语)
+        paramsObject.language = BDVoiceRecognitionLanguageCantonese;
+        
+    }
+
     
     // 设置识别模式，分为搜索和输入
     paramsObject.recogPropList = @[[NSNumber numberWithInt: EVoiceRecognitionPropertySearch]];
@@ -458,9 +474,9 @@
     paramsObject.recordPlayTones = EBDRecognizerPlayTonesRecordPlay;
     
     //提示语列表界面标题
-    paramsObject.tipsTitle = @"可以使用如下指令记账";
+    paramsObject.tipsTitle = @"支持3种识别语言";
     //提示语列表,用于提示 用户说出的话
-    paramsObject.tipsList = [NSArray arrayWithObjects:@"我要记账", @"买苹果花了十块钱", @"买牛奶五块钱", @"第四行滚动后可见", @"第五行是最后一行", nil];
+    paramsObject.tipsList = [NSArray arrayWithObjects:@"普通话", @"粤语", @"美式英文", nil];
     //是否在第一次启动时 打开提示语列表
     // 是否在对话框启动后展示引导提示，而不启动识别，默认关闭，若开启，请确认设置提示语列表
     //paramsObject.isShowTipsOnStart = YES;
